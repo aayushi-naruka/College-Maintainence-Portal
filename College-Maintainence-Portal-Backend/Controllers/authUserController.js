@@ -1,12 +1,11 @@
 const User=require('../Models/AuthUserModel')
+const redisclient=require('../Config/redis-connection')
 
-
-exports.signupController = (req,res) => {
+exports.signupController = async (req,res) => {
 
     const emailToValidate = req.body.email ;
     const emailRegexp = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$/;
-    
-    console.log(emailRegexp.test(emailToValidate));
+    console.log(req.sessionID)
     if(emailRegexp.test(emailToValidate)){
       User.find({ userName : emailToValidate}).then((response)=>{
           if(response.length > 0){
@@ -20,7 +19,15 @@ exports.signupController = (req,res) => {
               "password" : req.body.password,
               "role" : req.body.role
             })
-            userData.save().then(()=>{
+            userData.save().then(async()=>{
+
+              var data = {
+                "session-id": req.sessionID,
+                "user": req.body.email                  
+              }
+          await redisclient.set("sessionId",`${req.sessionID}`,()=>{
+                console.log("session created")               
+              })
               res.send({
                 msg : "data successfully inserted"
               })
