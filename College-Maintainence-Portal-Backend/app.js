@@ -1,18 +1,30 @@
 const express=require('express')
 const app=express()
 const authRoutes=require('./Routes/authRoutes')
-const PORT=3500
+const PORT=1234
 const cors=require('cors')
 const connectToDb=require('./connect/MongooseConnect')
-
+const connectRedis = require('connect-redis')
+const redisClient=require('./Config/redis-connection')
+const session = require('express-session')
+const cookieParser=require('cookie-parser')
 const databaseName = 'mongodb+srv://narukaayushi02:IvOl3TUBXUfOLuSG@cluster0.rfpilfr.mongodb.net/?retryWrites=true&w=majority'
 
-
+app.use(cookieParser())
 app.use(cors())
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true, 
+}))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/auth', authRoutes)
+
+
+
 
 async function mongoConnect() {
     await connectToDb(databaseName)
