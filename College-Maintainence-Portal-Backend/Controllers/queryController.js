@@ -57,7 +57,7 @@ exports.postQueryController = async (req,res) => {
     
     queryDetails.save().then(()=>{
         client.messages
-      .create({body: `${title}`, from: '+12708125811', to: '+918233351047'})
+      .create({body: `Room No.: ${room_no}, Issue :${title}, Department: ${department}`, from: '+12708125811', to: '+918233351047'})
       .then(message => {
         console.log(message.sid)
         res.json({
