@@ -1,0 +1,30 @@
+.navbar{
+    background-color: #034EA2;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+}
+.logo-container{
+    flex: 60%
+}
+.all-queries-link{
+    flex: 30%
+}
+.profile-icon-container{
+    flex: 10%
+}
+.logo-image{
+    width: 300px;
+    height: 100%;
+}
+.profile-icon{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: aliceblue;
+}
+.profile-dropdown{
+    background-color: inherit;
+    border: none;
+}

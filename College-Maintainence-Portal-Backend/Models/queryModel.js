@@ -10,6 +10,9 @@ const Query = new Schema({
     title:{
         type: String
     },
+    room_no:{
+        type: String
+    },
     created_by:{
         type: String
     },

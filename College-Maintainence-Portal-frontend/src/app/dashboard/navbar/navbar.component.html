@@ -1,0 +1,30 @@
+<div class="navbar">
+
+   
+        <div class="logo-container pe-5">
+          <img class="logo-image" src="https://www.poornima.org/img/logo.jpg" alt="" srcset="">
+        </div>
+        <div class="all-queries-link">
+world
+        </div>
+        <div class="profile-icon-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline-primary" id="dropdown1" class="profile-dropdown" ngbDropdownToggle>
+                    <div class="profile-icon">
+A
+                    </div>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <!-- items as links -->
+                    <a href="#" ngbDropdownItem>Link (enabled)</a>
+                    <a href="#" ngbDropdownItem [disabled]="true">Link (disabled, not focusable)</a>
+                    <a href="#" ngbDropdownItem [class.disabled]="true" aria-disabled="true">Link (disabled, focusable)</a>
+                </div>
+            </div>
+            
+        </div>
+  
+
+
+
+</div>
