@@ -1,0 +1,13 @@
+<button class="btn btn-danger query-button mt-5" *ngIf="!showAddQuery" (click)="toggleAddQuery()">
+<mat-icon>add</mat-icon>
+Post a Query
+</button>
+
+<app-add-query *ngIf="showAddQuery"  (displayAddQuery)="toggleAddQuery()" ></app-add-query>
+
+<div class="container mt-5">
+    <div class="row">
+        <app-query-container *ngFor="let query of userQueryData; let i = index" [queryData]="query"></app-query-container>
+    </div>
+</div>
+

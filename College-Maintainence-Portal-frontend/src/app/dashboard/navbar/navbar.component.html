@@ -1,30 +1,36 @@
 <div class="navbar">
 
-   
-        <div class="logo-container pe-5">
-          <img class="logo-image" src="https://www.poornima.org/img/logo.jpg" alt="" srcset="">
-        </div>
-        <div class="all-queries-link">
-world
-        </div>
-        <div class="profile-icon-container">
-            <div ngbDropdown class="d-inline-block">
-                <button type="button" class="btn btn-outline-primary" id="dropdown1" class="profile-dropdown" ngbDropdownToggle>
-                    <div class="profile-icon">
-A
+
+    <div class="logo-container pe-5">
+        <img class="logo-image" src="https://www.poornima.org/img/logo.jpg" alt="" srcset="">
+    </div>
+    <div class="home-link">
+        <div class="header__item"><a routerLink="/" class="header__link">Dashboard</a></div>
+    </div>
+    <div class="all-queries-link">
+        <div class="header__item"><a routerLink="/all" class="header__link">ALL Queries</a></div>
+    </div>
+    <div class="profile-icon-container">
+        <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn profile-dropdown" id="drop" ngbDropdownToggle>
+                <div class="profile-icon">
+                    <div class="profile-icon-text h3">
+                        A
                     </div>
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdown1">
-                    <!-- items as links -->
-                    <a href="#" ngbDropdownItem>Link (enabled)</a>
-                    <a href="#" ngbDropdownItem [disabled]="true">Link (disabled, not focusable)</a>
-                    <a href="#" ngbDropdownItem [class.disabled]="true" aria-disabled="true">Link (disabled, focusable)</a>
                 </div>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdown1">
+                <!-- items as links -->
+                <a href="#" ngbDropdownItem>Link (enabled)</a>
+                <a href="#" ngbDropdownItem [disabled]="true">Link (disabled, not focusable)</a>
+                <a href="#" ngbDropdownItem [class.disabled]="true" aria-disabled="true">Link (disabled, focusable)</a>
             </div>
-            
         </div>
-  
+
+    </div>
+
 
 
 
 </div>
+<router-outlet></router-outlet>
