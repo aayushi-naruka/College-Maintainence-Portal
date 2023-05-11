@@ -59,7 +59,7 @@ exports.loginController = (req,res) => {
     if (emailRegexp.test(emailToValidate)) {
       var numRow;
 
-      User.findOne({ userName : emailToValidate , password : req.body.password}).then((response)=>{
+      User.find({ userName : emailToValidate , password : req.body.password}).then((response)=>{
         if(response.length ===1){
           res.send({
             msg : "login successfull"
