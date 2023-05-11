@@ -1,0 +1,43 @@
+<div class="container-fluid add-query-component">
+    <form>
+        <div class="form-floating mt-4 mb-4">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+              <option selected disabled>Select Room No.</option>
+              <option value="AB01">AB01</option>
+              <option value="AB02">AB02</option>
+              <option value="AF01">AF01</option>
+              <option value="AF02">AF02</option>
+              <option value="AG01">AG01</option>
+              <option value="AG02">AG02</option>
+              <option value="AS01">AS01</option>
+              <option value="CB01">CB01</option>
+              <option value="CB02">CB02</option>
+              <option value="CF01">CF01</option>
+              <option value="CF02">CF02</option>
+              <option value="CG01">CG01</option>
+              <option value="CG02">CG02</option>
+              <option value="CS01">CS01</option>
+              
+            </select>
+            <label for="floatingSelect">Room No</label>
+          </div>
+          <div class="form-floating mb-4">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+              <option selected disabled>Select Room No.</option>
+              <option value="Cleaning">Cleaning</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Electrical">Electrical</option>              
+            </select>
+            <label for="floatingSelect">Room No</label>
+          </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Write your query here</label>
+          </div>
+          <span>
+            <button type="submit" class="btn btn-primary me-5">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="cancelHandler()">Cancel</button>
+          </span>
+
+    </form>
+</div>

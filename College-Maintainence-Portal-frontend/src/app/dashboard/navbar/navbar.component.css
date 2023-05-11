@@ -9,7 +9,10 @@
     flex: 60%
 }
 .all-queries-link{
-    flex: 30%
+    flex: 15%
+}
+.home-link{
+    flex:15%
 }
 .profile-icon-container{
     flex: 10%
@@ -28,3 +31,38 @@
     background-color: inherit;
     border: none;
 }
+
+.dropdown-toggle::after{
+    border:none !important;
+}
+
+.profile-icon-text{
+    height: 100%;
+    width: 100%;
+    padding-top: 5px;
+    
+}
+
+.header__link {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .header__link::after {
+    content: "";
+    width: 0px;
+    height: 2px;
+    background: rgb(255, 0, 85);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s ease;
+  }
+  
+  .header__link:hover::after {
+    width: 100%;
+    transition: 0.3s ease;
+  }
