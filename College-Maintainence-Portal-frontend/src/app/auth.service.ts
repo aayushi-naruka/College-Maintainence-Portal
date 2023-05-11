@@ -16,4 +16,8 @@ export class AuthService {
   login(data:any){
     return this.http.post("http://localhost:1234/auth/login", data)
   }
+
+  addQuery(data:any){
+    return this.http.post("http://localhost:1234/query/",data)
+  }
 }
