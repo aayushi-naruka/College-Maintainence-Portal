@@ -11,6 +11,13 @@ export class AddQueryComponent implements OnInit{
 
 ngOnInit(): void {
 
+//   {       "department": "Cleaning",
+//         "title":"tables are not cleaned",
+//         "room_no":"CF-05",
+//         "created_by":"6446995253929ee0017182a4"
+// }
+
+
 }
 
 cancelHandler(){
