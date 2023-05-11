@@ -10,6 +10,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { AllQueriesComponent } from './dashboard/all-queries/all-queries.component';
+import { HomeComponent } from './dashboard/home/home.component';
+// import {MatIconModule} from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddQueryComponent } from './dashboard/home/add-query/add-query.component';
+import { QueryContainerComponent } from './dashboard/query-container/query-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     NavbarComponent,
 
+    AllQueriesComponent,
+    HomeComponent,
+    AddQueryComponent,
+    QueryContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     NgbDropdownModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    // MatIconModule,
+    BrowserAnimationsModule,
     HttpClientModule
   ],
   providers: [],

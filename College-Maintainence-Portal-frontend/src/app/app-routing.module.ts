@@ -4,19 +4,27 @@ import { LoginComponent } from '../app/login/login.component';
 import { SignupComponent } from '../app/signup/signup.component';
 import {DashboardComponent} from '../app/dashboard/dashboard.component'
 import {AuthGuardGuard} from '../app/auth-guard.guard'
+import {AllQueriesComponent} from '../app/dashboard/all-queries/all-queries.component'
+import {HomeComponent} from '../app/dashboard/home/home.component'
 const routes: Routes = [
-   {path: '' ,
-  //  redirectTo :'login' , 
-  //  pathMatch : 'full'
-  component:DashboardComponent
-  },
+  //  {path: '' ,
+  // //  redirectTo :'login' , 
+  // //  pathMatch : 'full'
+  // component:DashboardComponent
+  // },
+  // {path: 'all',
+  // //canActivate:[AuthGuardGuard] ,
+  // component: AllQueriesComponent },
   {path:"signup",component:SignupComponent},
   {path:"login",component:LoginComponent},
-  {path:"",
+  {path:"", component: DashboardComponent ,
   children: [
-    {path: 'dashboard',
+    {path: '',
     //canActivate:[AuthGuardGuard] ,
-    component: DashboardComponent },
+    component: HomeComponent },
+    {path: 'all',
+    //canActivate:[AuthGuardGuard] ,
+    component: AllQueriesComponent },
    
   ]
 
