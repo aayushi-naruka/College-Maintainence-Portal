@@ -1,17 +1,18 @@
-<div>
+<div class="p-2">
 
-<button class="btn btn-danger query-button mt-5" *ngIf="!showAddQuery" (click)="toggleAddQuery()">
-<mat-icon>add</mat-icon>
+<button class="btn btn-danger query-button mt-5 " *ngIf="!showAddQuery" (click)="toggleAddQuery()">
+<span class="me-2"  style="font-size: x-large;"> + </span>
 Post a Query
 </button>
 
 <app-add-query *ngIf="showAddQuery"  (displayAddQuery)="toggleAddQuery()" ></app-add-query>
 
-<div *ngIf="userQueryData.length<=1" class="d-flex justify-content-center mt-5">
+<div *ngIf="userQueryData.length<1" class="d-flex justify-content-center mt-5">
     <div style="color: blueviolet; font-size: xx-large;">You don't have any Queries till now</div>    
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="userQueryData.length>0">
+    <h1>Here are your posted Queries</h1>
     <div class="row">
         <app-query-container class="col-md-4 col-lg-4 col-sm-4 col-xl-4 col-4 vw-30" *ngFor="let query of userQueryData; let i = index" [queryData]="query"></app-query-container>
     </div>

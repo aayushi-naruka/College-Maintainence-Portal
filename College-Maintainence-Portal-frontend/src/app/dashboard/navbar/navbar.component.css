@@ -4,9 +4,10 @@
     display: flex;
     flex-direction: row;
     padding: 0px;
+  
 }
 .logo-container{
-    flex: 60%
+    flex: 60%;
 }
 .all-queries-link{
     flex: 15%

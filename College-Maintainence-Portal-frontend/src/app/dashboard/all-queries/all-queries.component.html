@@ -1,3 +1,56 @@
+
+
+<div class="d-flex justify-content-center">
+
+  <div class="me-3">
+    <br/>
+    <div ngbDropdown>
+      <button class="btn btn-warning" id="gfg" 
+              ngbDropdownToggle>Department</button>
+      <div ngbDropdownMenu="gfg">
+    
+            <div ngbDropdownItem class="form-check">
+                <input class="form-check-input" type="checkbox" value="Electric" (click)="checkboxHandler($event)" id="Checkme1" />
+                <label class="form-check-label" for="Checkme1">Electric</label>
+            </div>
+    
+            <div ngbDropdownItem class="form-check">
+                <input class="form-check-input" type="checkbox" value="Cleaning" (click)="checkboxHandler($event)" id="Checkme1" />
+                <label class="form-check-label" for="Checkme1">Cleaning</label>
+            </div>
+      
+  
+            <div ngbDropdownItem class="form-check">
+                <input class="form-check-input" type="checkbox" value="Plumbing" (click)="checkboxHandler($event)" id="Checkme1" />
+                <label class="form-check-label" for="Checkme1">Plumbing</label>
+            </div>
+     
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <br/>
+    <div ngbDropdown>
+      <button class="btn btn-warning" id="hehe" 
+              ngbDropdownToggle>Status</button>
+      <div ngbDropdownMenu="hehe">    
+            <div ngbDropdownItem class="form-check">
+                <input class="form-check-input" type="checkbox" value="todo" (click)="statuscheckboxHandler($event)" id="Checkme1" />
+                <label class="form-check-label" for="Checkme1">Todo</label>
+            </div>    
+            <div ngbDropdownItem class="form-check">
+                <input class="form-check-input" type="checkbox" value="completed" (click)="statuscheckboxHandler($event)" id="Checkme1" />
+                <label class="form-check-label" for="Checkme1">Completed</label>
+            </div>
+           
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
 <div class="container mt-5">
     <div class="row">
         <app-query-container class="col-md-4 col-lg-4 col-sm-4 col-xl-4 col-4 vw-30" *ngFor="let query of allQueryData; let i = index" [queryData]="query"></app-query-container>

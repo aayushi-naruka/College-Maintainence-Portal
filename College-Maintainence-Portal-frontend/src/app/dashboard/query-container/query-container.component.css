@@ -9,3 +9,9 @@
   .col-md-4 {
     margin-top: 27px;
   }
+  .status-red{
+    color:red
+  }
+  .status-green{
+    color: green;
+  }
