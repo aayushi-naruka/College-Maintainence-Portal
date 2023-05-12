@@ -14,7 +14,10 @@ require("dotenv").config()
 const databaseName = 'mongodb+srv://narukaayushi02:IvOl3TUBXUfOLuSG@cluster0.rfpilfr.mongodb.net/?retryWrites=true&w=majority'
 
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:4201",
+    credentials: true,
+  }))
 app.use(session({
     secret: 'keyboard cat',
     resave: false,

@@ -4,6 +4,7 @@ import{Router} from'@angular/router'
 import { passwordValidator } from '../password.validator';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { AuthService } from '../auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent {
   signupForm: FormGroup;
-  constructor(  private router : Router , private http: HttpClient, private authService : AuthService) {
+  constructor(  private router : Router , private http: HttpClient, private authService : AuthService, private cookieservice : CookieService) {
     this.signupForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -28,9 +29,9 @@ export class SignupComponent {
         role: data.role
       }
 
-     this.authService.signup(obj).subscribe(res=>{
-       console.log(">>>>>",res);
-       this.router.navigate(['dashboard'])
+     this.authService.signup(obj).subscribe((res:any)=>{
+       this.cookieservice.set('session', res['session-id']);
+       this.router.navigate([''])
        });
 
 

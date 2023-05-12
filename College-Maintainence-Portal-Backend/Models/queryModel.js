@@ -18,7 +18,11 @@ const Query = new Schema({
     },
     created_date:{
         type: String
+    },
+    status:{
+        type: String
     }
+
 })
 
 module.exports = mongoose.model('Query', Query)

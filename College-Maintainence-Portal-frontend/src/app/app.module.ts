@@ -16,6 +16,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddQueryComponent } from './dashboard/home/add-query/add-query.component';
 import { QueryContainerComponent } from './dashboard/query-container/query-container.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { QueryContainerComponent } from './dashboard/query-container/query-conta
     HttpClientModule,
     // MatIconModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

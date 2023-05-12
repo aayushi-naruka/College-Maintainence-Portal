@@ -1,8 +1,16 @@
 
      
-            <div class="card p-3">
-                <div class="d-flex flex-row mb-3"><img src={{img_url}} width="70" />
-                    <div class="d-flex flex-column ml-2 ms-2"><span>{{queryid}}</span><span class="text-black-50">{{department}}</span></div>
+            <div class="card p-3 mb-4" style="background-color:aliceblue;">
+                <div class="d-flex flex-row mb-3"><img src={{img_url}} width="70" height="90" />
+                    <div class="d-flex flex-column ml-2 ms-2"><div>{{queryid}}</div><div class="text-black-50">{{department}}</div>
+                    <div *ngIf="!showdropdownstatus">
+                        <h2 [ngClass]="{'status-red': status==='todo','status-green': status==='completed'}">{{status}}</h2>
+                    </div>
+                    <select *ngIf="showdropdownstatus" class="form-select" aria-label="Default select example" value={{status}} (change)="statusChangeHandler($event)">
+                        <option value="todo">todo</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
                 </div>
                 <h3 style="font-weight: 800;">{{title}}</h3>
                 <div class="d-flex justify-content-between install mt-3"><div class="me-3"><strong>{{room_no}}</strong></div><div

@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const {getAllQueriesController,postQueryController,getQueryByUserIdController}=require('../Controllers/queryController')
+const {getAllQueriesController,postQueryController,getQueryByUserIdController,changeQueryStatus}=require('../Controllers/queryController')
 
 router.get("/all", getAllQueriesController)
 router.post("/", postQueryController)
-router.get("/:id",getQueryByUserIdController)
-
+router.get("/",getQueryByUserIdController)
+router.put("/",changeQueryStatus)
 module.exports=router

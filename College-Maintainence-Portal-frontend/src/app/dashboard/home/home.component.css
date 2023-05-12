@@ -1,6 +1,8 @@
 .query-button{
-    width: 300px;
+    width: 200px;
     height: 70px;
     color: beige;
     background-color: rgb(212, 0, 0);
+    font-size: large;
+    border-radius: 40px;
 }

@@ -4,9 +4,10 @@
     display: flex;
     flex-direction: row;
     padding: 0px;
+  
 }
 .logo-container{
-    flex: 60%
+    flex: 60%;
 }
 .all-queries-link{
     flex: 15%
@@ -65,4 +66,8 @@
   .header__link:hover::after {
     width: 100%;
     transition: 0.3s ease;
+  }
+
+  .dropdown-box{
+    width: 50px;
   }
