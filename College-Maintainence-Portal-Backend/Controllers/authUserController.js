@@ -91,3 +91,15 @@ exports.logoutController = async (req,res) => {
        
 
 }
+
+
+exports.userController = async (req,res) => {
+
+    let email= await redisclient.get(`${req.cookies.session}`)
+
+    User.findOne( {userName: email}).then((result)=>{
+         res.json(result)
+    })
+ 
+
+}

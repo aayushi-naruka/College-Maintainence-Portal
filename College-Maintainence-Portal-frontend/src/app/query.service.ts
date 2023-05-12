@@ -36,8 +36,12 @@ export class QueryService {
   submitQueryById(dataObj : object){
 
 
-    return this.http.post("http://localhost:1234/query",dataObj)
+    return this.http.post("http://localhost:1234/query",{body : dataObj})
 
+  }
+
+  updateQueryStatus(dataObj : object){
+    return this.http.put("http://localhost:1234/query",dataObj)
   }
 
   submitAllQueryData(data : any){

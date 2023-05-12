@@ -1,4 +1,6 @@
-import { Component , Input, OnInit, Output} from '@angular/core';
+import { Component , EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
+import { QueryService } from 'src/app/query.service';
 
 @Component({
   selector: 'app-query-container',
@@ -7,6 +9,7 @@ import { Component , Input, OnInit, Output} from '@angular/core';
 })
 export class QueryContainerComponent implements OnInit {
 @Input() queryData:any=""
+@Output() updateAllQueryData = new EventEmitter<boolean>();
 title:string=""
 department:string=""
 date:string=""
@@ -16,9 +19,13 @@ type:string=""
 room_no:string=""
 img_url:string=""
 status:string=""
+userData:any
+showdropdownstatus=false
+constructor(private authservice : AuthService,private queryservice : QueryService){}
+
 ngOnInit(): void {
   
-if(this.queryData!="")
+if(this.queryData!=""){
     this.title=this.queryData.title;
     this.department=this.queryData.department
     this.date=this.queryData.created_date
@@ -31,6 +38,33 @@ if(this.queryData!="")
     if(this.department=="Plumbing"){ this.img_url="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/08/plumbing-logos.jpg"}
 
 }
+
+this.userData= this.authservice.getUserData()
+
+if(this.userData.role==="maintainence"){
+this.showdropdownstatus=true
 }
 
 
+}
+
+
+statusChangeHandler(event : any){
+
+console.log(event)
+
+let dataObj={
+  queryId : this.queryid,
+  querystatus : event.target.value
+}
+
+this.queryservice.updateQueryStatus(dataObj).subscribe((response :any)=>{
+
+this.updateAllQueryData.emit(true)
+
+})
+
+}
+
+
+}

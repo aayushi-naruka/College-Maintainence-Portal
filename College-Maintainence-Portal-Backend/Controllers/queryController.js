@@ -1,6 +1,6 @@
 const redisclient=require('../Config/redis-connection')
 const Query=require('../Models/queryModel')
-const fast2sms = require('fast-two-sms')
+
 
 require("dotenv").config()
 
@@ -41,38 +41,57 @@ exports.getQueryByUserIdController = async(req,res) => {
 }
 
 exports.postQueryController = async (req,res) => {
-
+    let cookie=req.body.cookie
+    let email=await redisclient.get(`${cookie}`)
     let department = req.body.department
     let title=req.body.title
      let room_no= req.body.room_no
-     let created_by= req.body.created_by
-
+     let created_by= email
 
     let queryDetails=new Query({
         department,
         title,
         room_no,
         created_by,
-        created_date: new Date()
+        created_date: new Date(),
+        status: "todo"
     })
     
     queryDetails.save().then(()=>{
-        client.messages
-      .create({body: `Room No.: ${room_no}, Issue :${title}, Department: ${department}`, from: '+12708125811', to: '+918233351047'})
-      .then(message => {
-        console.log(message.sid)
-        res.json({
-            msg : "query submitted successfully",
-            result : message
-        })
-    });
-        
+    //     client.messages
+    //   .create({body: `Room No.: ${room_no}, Issue :${title}, Department: ${department}`, from: '+12708125811', to: '+918233351047'})
+    //   .then(message => {
+    //     console.log(message.sid)
+    //     res.json({
+    //         msg : "query submitted successfully",
+    //         result : message
+    //     })
+    // });
+      res.send({status: true , msg : "query submitted successfully"})  
         
 
     }).catch(()=>{
         res.json({
             msg : "error in submitting query"
         })
+    })
+
+}
+
+
+
+exports.changeQueryStatus=async(req,res)=>{
+
+    let queryId=req.body.queryId;
+    let querystatus= req.body.querystatus;
+
+    Query.findOneAndUpdate({_id : queryId},{status: querystatus}).then((err,docs)=>{
+         
+        res.json({
+            status : true,
+            msg : "status updated successfully"
+        })
+
     })
 
 }

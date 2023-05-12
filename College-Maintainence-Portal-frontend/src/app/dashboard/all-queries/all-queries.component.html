@@ -53,6 +53,6 @@
 
 <div class="container mt-5">
     <div class="row">
-        <app-query-container class="col-md-4 col-lg-4 col-sm-4 col-xl-4 col-4 vw-30" *ngFor="let query of allQueryData; let i = index" [queryData]="query"></app-query-container>
+        <app-query-container class="col-md-4 col-lg-4 col-sm-4 col-xl-4 col-4 vw-30" *ngFor="let query of allQueryData; let i = index" [queryData]="query"  (updateAllQueryData)="updateAllQueryData($event)"></app-query-container>
     </div>
 </div>

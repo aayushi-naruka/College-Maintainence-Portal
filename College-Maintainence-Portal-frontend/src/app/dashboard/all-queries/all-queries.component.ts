@@ -15,10 +15,18 @@ export class AllQueriesComponent implements OnInit {
 constructor(private queryservice : QueryService ){}
 
 ngOnInit(): void {
+  this.allQueryDataMethod()
+}
+
+allQueryDataMethod(){
   this.queryservice.getAllQueryData().subscribe((res:any)=>{
     this.allQueryData=res
     this.queryservice.submitAllQueryData(res)
   })
+}
+
+updateAllQueryData($event:any){
+  this.allQueryDataMethod()
 }
 
 checkboxHandler(event : any){
