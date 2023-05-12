@@ -22,15 +22,10 @@ exports.signupController = async (req,res) => {
             userData.save().then(async()=>{
 
               var data = {
-                "session-id": req.sessionID,
-                "user": req.body.email                  
+                "session-id": req.sessionID                
               }
-          await redisclient.set("sessionId",`${req.sessionID}`,()=>{
-                console.log("session created")               
-              })
-              res.send({
-                msg : "data successfully inserted"
-              })
+              redisclient.set(`${req.sessionID}`,`${req.body.email}`)
+              res.send(data)  
             }).catch((err)=>{
               res.send({
                 msg : "error in inserting data in database"    
@@ -51,6 +46,7 @@ exports.signupController = async (req,res) => {
 
 exports.loginController = (req,res) => {
 
+    
     const emailToValidate = req.body.email;
     const emailRegexp = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$/;
   
@@ -59,11 +55,16 @@ exports.loginController = (req,res) => {
     if (emailRegexp.test(emailToValidate)) {
       var numRow;
 
-      User.find({ userName : emailToValidate , password : req.body.password}).then((response)=>{
+      User.find({ userName : emailToValidate , password : req.body.password}).then(async(response)=>{
         if(response.length ===1){
-          res.send({
-            msg : "login successfull"
-          })
+          var data = {
+            "session-id": req.sessionID,
+            "user_id": response[0]['_id']                 
+          }
+          redisclient.set(`${req.sessionID}`,`${req.body.email}`)
+          res.send(data)  
+          
+          
         }
         else{
           res.send({
@@ -83,9 +84,10 @@ exports.loginController = (req,res) => {
 
 }
 
-exports.logoutController = (req,res) => {
+exports.logoutController = async (req,res) => {
 
-                res.json({status:200,comment: "session deleted"})
+                await redisclient.del(`${req.cookies.session}`)
+                res.json({status: true,comment: "logout successfull"})
        
 
 }

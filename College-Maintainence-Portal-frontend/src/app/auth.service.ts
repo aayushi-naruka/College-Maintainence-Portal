@@ -17,7 +17,14 @@ export class AuthService {
     return this.http.post("http://localhost:1234/auth/login", data)
   }
 
+  logout(){
+    return this.http.get("http://localhost:1234/auth/logout", {      
+      withCredentials: true
+    })
+  }
+
   addQuery(data:any){
     return this.http.post("http://localhost:1234/query/",data)
   }
+
 }

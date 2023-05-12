@@ -67,3 +67,7 @@
     width: 100%;
     transition: 0.3s ease;
   }
+
+  .dropdown-box{
+    width: 50px;
+  }

@@ -9,7 +9,6 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 
-
 // AC3bd2a2b7812fdac89f080ac95555d323
 // bcceac3b2aa4873fe129c17acc17f19e
 
@@ -26,16 +25,18 @@ exports.getAllQueriesController = async (req,res) => {
 
 }
 
-exports.getQueryByUserIdController = async (req,res) => {
-
-    Query.find({ created_by : req.params.id}).then((result)=>{
-        res.json(result)
-    }).catch(()=>{
-        res.json({
-            msg:"error occurred in fetching data"
+exports.getQueryByUserIdController = async(req,res) => {
+    let cookie=req.cookies.session
+    let email=await redisclient.get(`${cookie}`)
+ 
+        Query.find({ created_by : email}).then((result)=>{
+            res.json(result)
+        }).catch(()=>{
+            res.json({
+                msg:"error occurred in fetching data"
+            })
         })
-    })
-
+   
 
 }
 

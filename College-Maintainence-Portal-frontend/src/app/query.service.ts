@@ -28,10 +28,14 @@ export class QueryService {
   }
 
   getQueryById(){
-    return this.http.get(`http://localhost:1234/query/6446995253929ee0017182a4`)
+    return this.http.get(`http://localhost:1234/query`, {      
+      withCredentials: true
+    })
   }
 
   submitQueryById(dataObj : object){
+
+
     return this.http.post("http://localhost:1234/query",dataObj)
 
   }
@@ -79,7 +83,7 @@ getStatusFilter(){
   return this.statusFilter.value
 }
 
-submitfinalFilteredData(data : any){
+submitFinalFilteredData(data : any){
   this.finalFilter.next(data)
 }
 

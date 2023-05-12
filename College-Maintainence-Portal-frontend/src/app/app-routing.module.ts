@@ -7,24 +7,13 @@ import {AuthGuardGuard} from '../app/auth-guard.guard'
 import {AllQueriesComponent} from '../app/dashboard/all-queries/all-queries.component'
 import {HomeComponent} from '../app/dashboard/home/home.component'
 const routes: Routes = [
-  //  {path: '' ,
-  // //  redirectTo :'login' , 
-  // //  pathMatch : 'full'
-  // component:DashboardComponent
-  // },
-  // {path: 'all',
-  // //canActivate:[AuthGuardGuard] ,
-  // component: AllQueriesComponent },
+  {path: '' ,redirectTo :'dashboard' ,pathMatch : 'full'},
   {path:"signup",component:SignupComponent},
   {path:"login",component:LoginComponent},
   {path:"", component: DashboardComponent ,
   children: [
-    {path: '',
-    //canActivate:[AuthGuardGuard] ,
-    component: HomeComponent },
-    {path: 'all',
-    //canActivate:[AuthGuardGuard] ,
-    component: AllQueriesComponent },
+    {path: 'dashboard',canActivate:[AuthGuardGuard] ,component: HomeComponent },
+    {path: 'all', canActivate:[AuthGuardGuard] ,component: AllQueriesComponent },
    
   ]
 

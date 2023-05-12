@@ -4,6 +4,6 @@ const {getAllQueriesController,postQueryController,getQueryByUserIdController}=r
 
 router.get("/all", getAllQueriesController)
 router.post("/", postQueryController)
-router.get("/:id",getQueryByUserIdController)
+router.get("/",getQueryByUserIdController)
 
 module.exports=router
